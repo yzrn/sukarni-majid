@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block konten%}
+
+<h1>Selamat datang diwebsite kami</h1>
+
+<div class="jumbotron"> 
+
+    <h3>Pengaduan</h3>
+    <!--form pengaduan-->
+    <form method="POST">
+        {{form.hidden_tag()}}
+
+     <div class="form-group">
+       {{form.subjek.label(class="form-control-label")}}
+       {% if form.subjek.errors %}
+            {{form.subjek(class="form-control is-invalid")}}
+ 
+            <div class="invalid">
+              {%for error in form.subjek.errors %}
+              <span>{{error}}</span>
+              {% endfor %}
+            </div>
+       {%else%}
+         {{form.subjek(class="form-control")}}
+ 
+       {%endif%}
+     </div>
+
+     <div class="form-group">
+      {{form.kategori.label(class="form-control-label")}}
+      {% if form.kategori.errors %}
+           {{form.kategori(class="form-control is-invalid")}}
+
+           <div class="invalid">
+             {%for error in form.kategori.errors %}
+             <span>{{error}}</span>
+             {% endfor %}
+           </div>
+      {%else%}
+        {{form.kategori(class="form-control")}}
+
+      {%endif%}
+    </div>
+
+    <div class="form-group">
+      {{form.detail_pengaduan.label(class="form-control-label")}}
+      {% if form.detail_pengaduan.errors %}
+           {{form.detail_pengaduan(class="form-control is-invalid")}}
+
+           <div class="invalid">
+             {%for error in form.detail_pengaduan.errors %}
+             <span>{{error}}</span>
+             {% endfor %}
+           </div>
+      {%else%}
+        {{form.detail_pengaduan(class="form-control")}}
+
+      {%endif%}
+    </div>
+  
+     
+     <button type="submit" class="btn btn-primary">Submit</button>
+   </form>
+ 
+    <hr class="my-4">
+    <h4>Data Pengaduan</h4>
+
+    <table class="table table-responsive table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Tgl Post</th>
+          <th scope="col">Subjek</th>
+          <th scope="col">Kategori</th>
+          <th scope="col">Edit</th>
+          <th scope="col">hapus</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in dt_pengaduan %}
+        <tr>
+          <th scope="row"></th>
+          <td>{{data.tgl_post}}</td>
+          <td>{{data.subjek}}</td>
+          <td>{{data.kategori}}</td>
+          <td><a class="btn btn-outline-info" href="{{ url_for('rmahasiswa.update_pengaduan', ed_id=data.id)}}">Edit</a></td>
+          <td><a class="btn btn-outline-danger" href="/delete/{{data.id}}" onclick="return confirm('apakah anda ingin menghapus data')">hapus</a></td>
+        </tr>
+      {% endfor %} 
+           
+      </tbody>
+    </table>
+   
+  
+
+
+
+{% endblock%}

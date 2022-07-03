@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block konten%}
+
+<body>
+  <table width="100%">
+  <tr>
+  <td width="25" align="center"><img src="{{ url_for ('static', filename="Ummu.png")}}" width="100%"></td>
+  <td width="50" align="center"><h2>Universitas Muhammadiyah Maluku Utara </h2><br>
+  <h5>Kampus terpadu (pusat) : Jl. KHA. Dahlan, Kelurahan Sasa Kecamatan Kota Ternate Selatan, Ternate. 97724
+   </h5></td>
+  </table>
+  <hr>
+
+  <td width="50" align="center"><h1>Update Data Profile Anda</h1>
+
+<form method="POST" enctype="multipart/form-data">
+       {{form.hidden_tag()}}
+    <div class="form-group">
+      {{form.npm.label(class="form-control-label")}}
+      {% if form.npm.errors %}
+           {{form.npm(class="form-control is-invalid")}}
+
+           <div class="invalid">
+             {%for error in form.npm.errors %}
+             <span>{{error}}</span>
+             {% endfor %}
+           </div>
+      {%else%}
+        {{form.npm(class="form-control")}}
+
+      {%endif%}
+    </div>
+ 
+    <div class="form-group">
+      {{form.nama.label(class="form-control-label")}}
+      {{form.nama(class="form-control")}}
+    </div>
+
+    <div class="form-group">
+      {{form.email.label(class="form-control-label")}}
+      {% if form.email.errors %}
+           {{form.email(class="form-control is-invalid")}}
+
+           <div class="invalid">
+             {%for error in form.email.errors %}
+             <span>{{error}}</span>
+             {% endfor %}
+           </div>
+      {%else%}
+        {{form.email(class="form-control")}}
+
+      {%endif%}
+    </div>
+
+    <div class="form-group">
+      {{form.kelas.label(class="form-control-label")}}
+      {{form.kelas(class="form-control")}}
+    </div>
+
+    <div class="form-group">
+      {{form.alamat.label(class="form-control-label")}}
+      {{form.alamat(class="form-control")}}
+    </div>
+
+
+    <div class="form-group">
+      {{form.password.label(class="form-control-label")}}
+      {% if form.password.errors %}
+           {{form.password(class="form-control is-invalid")}}
+
+           <div class="invalid">
+             {%for error in form.password.errors %}
+             <span>{{error}}</span>
+             {% endfor %}
+           </div>
+      {%else%}
+        {{form.password(class="form-control")}}
+
+      {%endif%}
+    </div>
+
+
+    <div class="form-group">
+      {{form.konf_pass.label(class="form-control-label")}}
+      {% if form.konf_pass.errors %}
+           {{form.konf_pass(class="form-control is-invalid")}}
+
+           <div class="invalid">
+             {%for error in form.konf_pass.errors %}
+             <span>{{error}}</span>
+             {% endfor %}
+           </div>
+      {%else%}
+        {{form.konf_pass(class="form-control")}}
+
+      {%endif%}
+    </div>
+
+
+    <div class="form-group">
+      {{form.foto.label(class="form-control-label")}}
+      {% if form.foto.errors %}
+           {{form.foto(class="form-control is-invalid")}}
+
+           <div class="invalid-feedback">
+             {%for error in form.foto.errors %}
+             <span>{{error}}</span>
+             {% endfor %}
+           </div>
+      {%else%}
+        {{form.foto(class="form-control")}}
+
+      {%endif%}
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Enter</button>
+  </form>
+
+
+{% endblock%}
+

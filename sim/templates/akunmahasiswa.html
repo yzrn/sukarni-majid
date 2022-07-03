@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block konten%}
+
+<h1>Selamat datang diwebsite kami</h1>
+
+<div class="jumbotron"> 
+
+    <h1 class="display-4">Hello, {{current_user.nama}}!</h1>
+    <p class="lead">welcome to system informasi Pengaduan.</p>
+    <hr class="my-4">
+    <p>klik for pengaduan </p>
+    <a class="btn btn-warning btn-lg" href="{{ url_for('rmahasiswa.pengaduan')}}" role="button">Pengaduan</a>
+  </div>
+
+  <img src="{{ url_for ('static', filename="selamatDatang.jpg")}}" width="600px">
+
+
+
+{% endblock%}
